@@ -1,0 +1,45 @@
+{
+  "expression": "rest/companies/1$",
+  "method": "PUT",
+  "name": "put-some-company",
+  "isArray": false,
+  "responses": {
+    "updated": {
+      "default": true,
+      "data": {
+        "id": "1",
+        "version": 2,
+        "name": "Some company",
+        "address": "Some street 123",
+        "city": "Aarhus",
+        "country": "Denmark",
+        "email": "email@example.com",
+        "phone": "12345678"
+      }
+    },
+    "version-conflict": {
+      "default": false,
+      "status": 409,
+      "statusText": "Conflict",
+      "data": {
+        "errorCode": "version-conflict",
+        "data": [
+          {
+            "field": "version",
+            "code": "conflict",
+            "message": "Someone else has performed an update since you last read the data. Please read the latest version, redo your modifications and try again. "
+          }
+        ]
+      }
+    },
+    "failed": {
+      "default": false,
+      "status": 500,
+      "statusText": "Internal server error",
+      "data": {
+        "errorCode": "server-error",
+        "data": []
+      }
+    }
+  }
+}

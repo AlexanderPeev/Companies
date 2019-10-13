@@ -1,0 +1,36 @@
+{
+  "expression": "rest/companies/2$",
+  "method": "GET",
+  "name": "get-other-company",
+  "isArray": false,
+  "responses": {
+    "other-company": {
+      "default": true,
+      "data": {
+        "id": "2",
+        "version": 1,
+        "name": "Other company",
+        "address": "Other street 234",
+        "city": "Copenhagen",
+        "country": "Denmark"
+      }
+    },
+    "other-company-edited": {
+      "default": false,
+      "data": {
+        "id": "2",
+        "version": 2,
+        "name": "Other company",
+        "address": "Other street 345",
+        "city": "Aarhus",
+        "country": "Denmark"
+      }
+    },
+    "no-company": {
+      "default": false,
+      "status": 404,
+      "statusText": "Not found",
+      "data": {}
+    }
+  }
+}

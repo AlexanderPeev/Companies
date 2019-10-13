@@ -1,0 +1,75 @@
+.loading-wrapper {
+  display: flex;
+  align-self:center;
+  align-items:center;
+  flex-direction:column;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.loading {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error {
+  border-radius: 1em;
+  margin: 1em;
+  padding: 1em;
+  text-align: center;
+  border-width: 0.5em;
+  border-color: #f00;
+  border-style: solid dashed;
+}
+
+.no-companies {
+  border-radius: 1em;
+  margin: 1em;
+  padding: 1em;
+  text-align: center;
+}
+
+.no-companies-info {
+  color: #00f;
+  vertical-align: middle;
+}
+
+h1 {
+  margin: 0 0 1em;
+}
+
+.companies {
+  padding: 1em;
+}
+
+.company {
+  margin: .5em 0;
+}
+
+.company-icon {
+  visibility: hidden;
+  vertical-align: middle;
+  margin: 0 .5em 0 0;
+}
+
+.company:hover .company-icon {
+  visibility: visible;
+}
+
+.no-companies-create-link {
+  text-decoration: none;
+}
+
+.create-link {
+  text-decoration: none;
+  float: right;
+}
+
+.company-link {
+  text-decoration: none;
+}

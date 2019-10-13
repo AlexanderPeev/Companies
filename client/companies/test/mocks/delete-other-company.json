@@ -1,0 +1,23 @@
+{
+  "expression": "rest/companies/2$",
+  "method": "GET",
+  "name": "delete-other-company",
+  "isArray": false,
+  "responses": {
+    "deleted": {
+      "default": true,
+      "status": 204,
+      "statusText": "No Content",
+      "data": null
+    },
+    "failed": {
+      "default": false,
+      "status": 500,
+      "statusText": "Internal server error",
+      "data": {
+        "errorCode": "server-error",
+        "data": []
+      }
+    }
+  }
+}

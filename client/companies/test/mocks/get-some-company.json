@@ -1,0 +1,27 @@
+{
+  "expression": "rest/companies/1$",
+  "method": "GET",
+  "name": "get-some-company",
+  "isArray": false,
+  "responses": {
+    "some-company": {
+      "default": true,
+      "data": {
+        "id": "1",
+        "version": 2,
+        "name": "Some company",
+        "address": "Some street 123",
+        "city": "Aarhus",
+        "country": "Denmark",
+        "email": "email@example.com",
+        "phone": "12345678"
+      }
+    },
+    "no-company": {
+      "default": false,
+      "status": 404,
+      "statusText": "Not found",
+      "data": {}
+    }
+  }
+}

@@ -1,0 +1,183 @@
+.loading-wrapper {
+  display: flex;
+  align-self:center;
+  align-items:center;
+  flex-direction:column;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.loading {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error {
+  border-radius: 1em;
+  margin: 1em;
+  padding: 1em;
+  text-align: center;
+  border-width: 0.5em;
+  border-color: #f00;
+  border-style: solid dashed;
+}
+
+h1 {
+  margin: 0 0 1em;
+}
+
+.company-wrapper {
+  padding: 1em;
+}
+
+.cancel-link {
+  text-decoration: none;
+  float: right;
+}
+
+.edit-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inline-icon {
+  vertical-align: middle;
+}
+
+.update-error-message {
+  color: #f00;
+}
+
+.updating-message {
+  color: #00f;
+}
+
+.updated-message {
+  color: #0f0;
+}
+
+.update-button {
+  float: right;
+}
+
+.drone {
+    width: 40%;
+    display: flex;
+    height: 20em;
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.drone-svg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  top: 0;
+  transform-origin: 50% 60%;
+}
+
+@keyframes liftoffRise {
+  0%   {top: 0;}
+  100% {top: -50%;}
+}
+
+@keyframes landLower {
+  0%   {top: -50%;}
+  100% {top: 0;}
+}
+
+@keyframes liftoffEngines {
+  0%   {opacity: 0;}
+  25% {opacity: .5;}
+  100% {opacity: 1;}
+}
+
+@keyframes landEngines {
+  0%   {opacity: 1;}
+  75% {opacity: 0.25;}
+  100% {opacity: 0;}
+}
+
+@keyframes pulseHeight {
+  0%   {top: -50%;}
+  25% {top: -52%;}
+  45% {top: -50%;}
+  75% {top: -48%;}
+  100% {top: -50%;}
+}
+
+@keyframes pulseEngines {
+  0%   {opacity: 1;}
+  25% {opacity: 0.5;}
+  45% {opacity: 1;}
+  75% {opacity: 0.5;}
+  100% {opacity: 1;}
+}
+
+@keyframes crashLower {
+  0%   {top: -50%; transform: rotateZ(0deg);}
+  100% {top: 0; transform: rotateZ(180deg);}
+}
+
+@keyframes fixDrone {
+  0%   {top: 0; transform: rotateZ(180deg);}
+  100% {top: 0; transform: rotateZ(0deg);}
+}
+
+@keyframes crashEngines {
+  0%   {opacity: 1;}
+  25% {opacity: 0.25;}
+  30% {opacity: 0;}
+  55% {opacity: 0.25;}
+  65% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+@keyframes fixEngines {
+  0%   {opacity: 0;}
+  30% {opacity: 0;}
+  55% {opacity: 0.25;}
+  65% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+#left-flame, #right-flame, #left-bright-flame, #right-bright-flame {
+  opacity: 0;
+}
+
+.updating .drone-svg {
+  animation: liftoffRise 0.7s, pulseHeight 3s linear .7s infinite;
+  top: -50%;
+}
+
+.updating #left-flame, .updating #right-flame, .updating #left-bright-flame, .updating #right-bright-flame {
+  opacity: 1;
+  animation: liftoffEngines .2s, pulseEngines 1s linear .2s infinite;
+}
+
+.updated .drone-svg {
+  animation: landLower 0.7s;
+  top: 0;
+}
+
+.updated #left-flame, .updated #right-flame, .updated #left-bright-flame, .updated #right-bright-flame {
+  opacity: 0;
+  animation: landEngines .75s;
+}
+
+.update-error .drone-svg {
+  animation: crashLower 0.7s, fixDrone 1.5s ease-in-out .7s;
+  top: 0;
+}
+
+.update-error #left-flame, .update-error #right-flame, .update-error #left-bright-flame, .update-error #right-bright-flame {
+  opacity: 0;
+  animation: crashEngines .75s, fixEngines 1.5s linear .75s;
+}

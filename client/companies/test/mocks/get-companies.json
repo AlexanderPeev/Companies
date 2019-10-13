@@ -1,0 +1,35 @@
+{
+  "expression": "rest/companies/?$",
+  "method": "GET",
+  "name": "get-companies",
+  "isArray": true,
+  "responses": {
+    "some-companies": {
+      "default": true,
+      "data": [
+        {
+          "id": "1",
+          "version": 2,
+          "name": "Some company",
+          "address": "Some street 123",
+          "city": "Aarhus",
+          "country": "Denmark",
+          "email": "email@example.com",
+          "phone": "12345678"
+        },
+        {
+          "id": "2",
+          "version": 1,
+          "name": "Other company",
+          "address": "Other street 234",
+          "city": "Copenhagen",
+          "country": "Denmark"
+        }
+      ]
+    },
+    "no-companies": {
+      "default": false,
+      "data": []
+    }
+  }
+}

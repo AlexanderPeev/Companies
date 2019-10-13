@@ -1,0 +1,46 @@
+.loading-wrapper {
+  display: flex;
+  align-self:center;
+  align-items:center;
+  flex-direction:column;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.loading {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error {
+  border-radius: 1em;
+  margin: 1em;
+  padding: 1em;
+  text-align: center;
+  border-width: 0.5em;
+  border-color: #f00;
+  border-style: solid dashed;
+}
+
+h1 {
+  margin: 0 0 1em;
+}
+
+.company-wrapper {
+  padding: 1em;
+}
+
+.edit-link {
+  text-decoration: none;
+  float: right;
+}
+
+.back-link {
+  text-decoration: none;
+  float: right;
+}
