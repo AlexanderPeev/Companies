@@ -116,6 +116,20 @@
    x="355" />
 
 <ellipse
+   style="fill:#f00;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round"
+   id="circle-lamp"
+   cx="400"
+   cy="267"
+   rx="10"
+   ry="10" />
+  <ellipse
+   style="fill:#000;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round"
+   id="circle-coffee"
+   cx="400"
+   cy="427"
+   rx="10"
+   ry="10" />
+<ellipse
    style="fill:url(#linearGradient4616);fill-opacity:1;stroke-width:0.5521763;stroke-linecap:round;stroke-linejoin:round"
    id="left-bright-flame"
    cx="222.46898"

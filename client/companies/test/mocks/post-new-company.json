@@ -1,6 +1,6 @@
 {
-  "expression": "rest/companies$",
-  "method": "GET",
+  "expression": "rest/companies/?$",
+  "method": "POST",
   "name": "post-new-company",
   "isArray": false,
   "responses": {

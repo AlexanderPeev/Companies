@@ -1,8 +1,8 @@
 .loading-wrapper {
   display: flex;
-  align-self:center;
-  align-items:center;
-  flex-direction:column;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
   height: 100%;
   margin: 0 auto;
   text-align: center;
@@ -47,6 +47,10 @@ h1 {
   align-items: center;
 }
 
+.field {
+  margin: .5em 0;
+}
+
 .inline-icon {
   vertical-align: middle;
 }
@@ -68,11 +72,12 @@ h1 {
 }
 
 .drone {
-    width: 40%;
-    display: flex;
-    height: 20em;
-    align-self: flex-end;
-    align-items: flex-end;
+  width: 40%;
+  max-width: 20em;
+  display: flex;
+  height: 20em;
+  align-self: flex-end;
+  align-items: flex-end;
 }
 
 .drone-svg {
@@ -84,68 +89,166 @@ h1 {
 }
 
 @keyframes liftoffRise {
-  0%   {top: 0;}
-  100% {top: -50%;}
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -50%;
+  }
 }
 
 @keyframes landLower {
-  0%   {top: -50%;}
-  100% {top: 0;}
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 0;
+  }
 }
 
 @keyframes liftoffEngines {
-  0%   {opacity: 0;}
-  25% {opacity: .5;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes landEngines {
-  0%   {opacity: 1;}
-  75% {opacity: 0.25;}
-  100% {opacity: 0;}
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes pulseHeight {
-  0%   {top: -50%;}
-  25% {top: -52%;}
-  45% {top: -50%;}
-  75% {top: -48%;}
-  100% {top: -50%;}
+  0% {
+    top: -50%;
+  }
+  25% {
+    top: -52%;
+  }
+  45% {
+    top: -50%;
+  }
+  75% {
+    top: -48%;
+  }
+  100% {
+    top: -50%;
+  }
 }
 
 @keyframes pulseEngines {
-  0%   {opacity: 1;}
-  25% {opacity: 0.5;}
-  45% {opacity: 1;}
-  75% {opacity: 0.5;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  45% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes crashLower {
-  0%   {top: -50%; transform: rotateZ(0deg);}
-  100% {top: 0; transform: rotateZ(180deg);}
+  0% {
+    top: -50%;
+    transform: rotateZ(0deg);
+  }
+  100% {
+    top: 0;
+    transform: rotateZ(180deg);
+  }
 }
 
 @keyframes fixDrone {
-  0%   {top: 0; transform: rotateZ(180deg);}
-  100% {top: 0; transform: rotateZ(0deg);}
+  0% {
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+  100% {
+    top: 0;
+    transform: rotateZ(0deg);
+  }
 }
 
 @keyframes crashEngines {
-  0%   {opacity: 1;}
-  25% {opacity: 0.25;}
-  30% {opacity: 0;}
-  55% {opacity: 0.25;}
-  65% {opacity: 0;}
-  100% {opacity: 0;}
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  30% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.25;
+  }
+  65% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fixEngines {
-  0%   {opacity: 0;}
-  30% {opacity: 0;}
-  55% {opacity: 0.25;}
-  65% {opacity: 0;}
-  100% {opacity: 0;}
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.25;
+  }
+  65% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes canUpdatePulse {
+  0% {
+    fill: #fa0 !important;
+  }
+  50% {
+    fill: #ff0 !important;
+  }
+  100% {
+    fill: #fa0 !important;
+  }
+}
+
+@keyframes updatingPulse {
+  0% {
+    fill: #ff0 !important;
+  }
+  50% {
+    fill: #df0 !important;
+  }
+  100% {
+    fill: #ff0 !important;
+  }
 }
 
 #left-flame, #right-flame, #left-bright-flame, #right-bright-flame {
@@ -180,4 +283,30 @@ h1 {
 .update-error #left-flame, .update-error #right-flame, .update-error #left-bright-flame, .update-error #right-bright-flame {
   opacity: 0;
   animation: crashEngines .75s, fixEngines 1.5s linear .75s;
+}
+
+.canUpdate #circle-lamp {
+  fill: #fa0 !important;
+}
+
+.updated #circle-lamp {
+  fill: #0f0 !important;
+}
+
+.updating #circle-lamp {
+  fill: #ff0 !important;
+}
+
+.update-error #circle-lamp {
+  fill: #f00 !important;
+}
+
+.diff-error {
+  color: #a30;
+  cursor: pointer;
+  font-size: .8em;
+
+  em {
+    white-space: nowrap;
+  }
 }

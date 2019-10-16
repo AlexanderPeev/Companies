@@ -12,7 +12,7 @@
   <button mat-button (click)="retry()">Try again!</button>
 </div>
 
-<div class="company-wrapper" [class.updating]="updating" [class.update-error]="updateError || updateConflict" [class.updated]="updated" *ngIf="!loading && !error">
+<div class="company-wrapper" [class.canUpdate]="canUpdate" [class.updating]="updating" [class.update-error]="updateError || updateConflict" [class.updated]="updated" *ngIf="!loading && !error">
   <a class="cancel-link" mat-button href="/company/{{company.id}}">
     <mat-icon>cancel</mat-icon>
     Cancel
@@ -25,11 +25,8 @@
              enable-background="new 0 0 800 600"
              viewBox="0 0 800 600"
              y="0px" x="0px" version="1.1"
-             class="drone-svg" (click)="cycle()">
+             class="drone-svg">
           <defs id="defs30">
-            <svg version="1.1" viewBox="0 0 40 80" id="company-name-wrapper">
-              <text alignment-baseline="before-edge" fill="#000" y="0" x="0" id="company-name">{{company.name}}</text>
-            </svg>
             <linearGradient id="linearGradient4614">
               <stop id="stop4610" offset="0" style="stop-color:#cbffff;stop-opacity:1" />
               <stop style="stop-color:#beffff;stop-opacity:0.7019608" offset="0.82761687" id="stop4618"/>
@@ -59,8 +56,20 @@
             points="441.133,381.5 358.33,381.5 361.381,412.086 438.081,412.086 "
             id="polygon20" style="fill:#010101"/>
 
-          <use id="use4707" xlink:href="#company-name-wrapper"
-            height="80" width="40" y="435" x="355"/>
+          <ellipse
+            style="fill:#f00;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round"
+            id="circle-lamp"
+            cx="400"
+            cy="267"
+            rx="10"
+            ry="10" />
+          <ellipse
+            style="fill:#000;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round"
+            id="circle-coffee"
+            cx="400"
+            cy="427"
+            rx="10"
+            ry="10" />
 
           <ellipse
             style="fill:url(#linearGradient4616);fill-opacity:1;stroke-width:0.5521763;stroke-linecap:round;stroke-linejoin:round"
@@ -89,6 +98,9 @@
           <mat-error *ngIf="!company.name">
             Name is <strong>required</strong>
           </mat-error>
+          <span class="diff-error" *ngIf="updateConflict && isConflicted(initialCompany.name, editedCompany.name, company.name)" (click)="company.name = editedCompany.name; detectChanges()">
+            <em>Use the name you wrote?</em> (<strong>{{editedCompany.name}}</strong>)
+          </span>
         </mat-form-field>
       </div>
 
@@ -99,6 +111,9 @@
           <mat-error *ngIf="!company.address">
             Address is <strong>required</strong>
           </mat-error>
+          <span class="diff-error" *ngIf="updateConflict && isConflicted(initialCompany.address, editedCompany.address, company.address)" (click)="company.address = editedCompany.address; detectChanges()">
+            <em>Use the address you wrote?</em> (<strong>{{editedCompany.address}}</strong>)
+          </span>
         </mat-form-field>
       </div>
 
@@ -109,6 +124,9 @@
           <mat-error *ngIf="!company.city">
             City is <strong>required</strong>
           </mat-error>
+          <span class="diff-error" *ngIf="updateConflict && isConflicted(initialCompany.city, editedCompany.city, company.city)" (click)="company.city = editedCompany.city; detectChanges()">
+            <em>Use the city you wrote?</em> (<strong>{{editedCompany.city}}</strong>)
+          </span>
         </mat-form-field>
       </div>
 
@@ -119,18 +137,27 @@
           <mat-error *ngIf="!company.country">
             Country is <strong>required</strong>
           </mat-error>
+          <span class="diff-error" *ngIf="updateConflict && isConflicted(initialCompany.country, editedCompany.country, company.country)" (click)="company.country = editedCompany.country; detectChanges()">
+            <em>Use the country you wrote?</em> (<strong>{{editedCompany.country}}</strong>)
+          </span>
         </mat-form-field>
       </div>
 
       <div class="field">
         <mat-form-field>
           <input matInput placeholder="Email (optional)" type="email" [(ngModel)]="company.email" [readonly]="updating"/>
+          <span class="diff-error" *ngIf="updateConflict && isConflicted(initialCompany.email, editedCompany.email, company.email)" (click)="company.email = editedCompany.email; detectChanges()">
+            <em>Use the email you wrote?</em> (<strong>{{editedCompany.email}}</strong>)
+          </span>
         </mat-form-field>
       </div>
 
       <div class="field">
         <mat-form-field>
           <input matInput placeholder="Phone number (optional)" [(ngModel)]="company.phone" [readonly]="updating"/>
+          <span class="diff-error" *ngIf="updateConflict && isConflicted(initialCompany.phone, editedCompany.phone, company.phone)" (click)="company.phone = editedCompany.phone; detectChanges()">
+            <em>Use the phone you wrote?</em> (<strong>{{editedCompany.phone}}</strong>)
+          </span>
         </mat-form-field>
       </div>
     </div>

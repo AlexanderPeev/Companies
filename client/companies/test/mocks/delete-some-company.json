@@ -1,6 +1,6 @@
 {
   "expression": "rest/companies/1$",
-  "method": "GET",
+  "method": "DELETE",
   "name": "delete-some-company",
   "isArray": false,
   "responses": {
