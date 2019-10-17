@@ -2,7 +2,7 @@ FROM node:10.16.3
 ENV NODE_VERSION=10.16.3
 RUN apt-get update && \
     apt-get install wget curl ca-certificates rsync -y
-RUN source /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+RUN . /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
 RUN wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
 RUN apt-get update && \
     apt-get install rethinkdb -y
