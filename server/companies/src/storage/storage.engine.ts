@@ -49,7 +49,7 @@ export class StorageEngine {
             if (tables.some(element => element === tableName)) {
                 return Promise.resolve({connection, database});
             } else {
-                return database.tableCreate(databaseName).run(connection).then(() => Promise.resolve({connection, database}));
+                return database.tableCreate(tableName).run(connection).then(() => Promise.resolve({connection, database}));
             }
         });
     }
