@@ -70,7 +70,7 @@ export class CompanyEditorComponent implements OnInit, OnDestroy {
     });
   }
 
-  private detectChanges() {
+  public detectChanges() {
     if (!this.destroyed) {
       this.cdr.detectChanges();
     }
