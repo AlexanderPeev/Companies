@@ -7,7 +7,11 @@ RUN wget http://mirrors.kernel.org/ubuntu/pool/main/p/protobuf/libprotobuf9v5_2.
 RUN apt-add-repository -y https://download.rethinkdb.com/apt
 RUN apt-get update && \
     apt-get install rethinkdb -y
-ENV NODE_BIN=/usr/bin
-RUN cd /client/companies && ${NODE_BIN}/npm install --no-save && ${NODE_BIN}/npm run build-prod && cp dist/companies/* ${DOCKER_DIR}/client
-RUN cd /server/companies && ${NODE_BIN}/npm install --no-save && ${NODE_BIN}/npm run build-prod && cp build/server/companies/src/* ${DOCKER_DIR}/server
-ENTRYPOINT ["${NODE_BIN}/node", "/server/build/server/companies/src/main.js", "/client/dist/companies"]
+RUN ls -al /
+ADD client /app/client
+ADD api /app/api
+ADD server /app/server
+RUN cd /app/client/companies && npm install --no-save && npm run build-prod
+RUN cd /app/server/companies && npm install --no-save && npm run build-prod
+EXPOSE 8081
+ENTRYPOINT ["node", "/app/server/build/server/companies/src/main.js", "/app/client/dist/companies"]
