@@ -1,8 +1,8 @@
 FROM rethinkdb:2.3.6
 ENV NODE_VERSION=10.16.3
-RUN apt-get install apt-transport-https
 RUN apt-get update && \
-    apt-get install wget curl ca-certificates rsync -y
+    apt-get install apt-transport-https
+RUN apt-get install wget curl ca-certificates rsync -y
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 ENV DOCKER_DIR=$(pwd)
 ENV NVM_DIR=/root/.nvm
