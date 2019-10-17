@@ -15,3 +15,4 @@ RUN cd /app/client/companies && npm install --no-save && npm run build-prod
 RUN cd /app/server/companies && npm install --no-save && npm run build-prod
 EXPOSE 8081
 ENTRYPOINT ["node", "/app/server/build/server/companies/src/main.js", "/app/client/dist/companies"]
+CMD ["node", "/app/server/build/server/companies/src/main.js", "/app/client/dist/companies"]
