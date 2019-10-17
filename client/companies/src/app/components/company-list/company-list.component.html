@@ -9,7 +9,7 @@
     <mat-icon class="no-companies-info">info</mat-icon> There are no companies at the moment!
   </p>
 
-  <a class="no-companies-create-link" mat-button href="/companies/new">
+  <a class="no-companies-create-link" mat-button [routerLink]="['/companies/new']">
     <mat-icon>create</mat-icon>
     Create one!
   </a>
@@ -24,14 +24,14 @@
 </div>
 
 <div class="companies" *ngIf="!loading && !error && !!companies.length">
-  <a class="create-link" mat-button href="/companies/new">
+  <a class="create-link" mat-button [routerLink]="['/companies/new']">
     <mat-icon>create</mat-icon>
     Create new
   </a>
   <h1>List of companies </h1>
 
   <div class="company" *ngFor="let company of companies">
-    <a class="company-link" href="/company/{{company.id}}">
+    <a class="company-link" [routerLink]="['/company', company.id]">
       <mat-card>
         <mat-icon class="company-icon">visibility</mat-icon>
 

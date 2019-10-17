@@ -12,12 +12,31 @@
   <button mat-button (click)="retry()">Try again!</button>
 </div>
 
-<div class="company-wrapper" *ngIf="!loading && !error">
-  <a class="edit-link" mat-button href="/company/{{company.id}}/edit">
+<div class="error" *ngIf="!loading && deletionError">
+  <p>
+    Something went wrong while deleting the company!
+  </p>
+
+  <button mat-button (click)="retryDeleting()">Try deleting it again!</button>
+</div>
+
+<div class="deleted" *ngIf="!loading && deleted">
+  <p>
+    The company was deleted successfully!
+  </p>
+
+  <a mat-button [routerLink]="['/companies']">
+    <mat-icon>list</mat-icon>
+    Back to list
+  </a>
+</div>
+
+<div class="company-wrapper" *ngIf="!loading && !error && !deleted">
+  <a class="edit-link" mat-button [routerLink]="['/company', company.id, 'edit']">
     <mat-icon>edit</mat-icon>
     Edit
   </a>
-  <a class="back-link" mat-button href="/companies">
+  <a class="back-link" mat-button [routerLink]="['/companies']">
     <mat-icon>list</mat-icon>
     Back to list
   </a>
@@ -30,4 +49,8 @@
   <p *ngIf="!!company.email">Email: {{company.email}}</p>
   <p *ngIf="!!company.phone">Phone: {{company.phone}}</p>
 
+  <button class="delete-button" mat-button (click)="deleteCompany()">
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
 </div>

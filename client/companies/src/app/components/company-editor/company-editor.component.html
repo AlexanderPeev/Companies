@@ -13,7 +13,7 @@
 </div>
 
 <div class="company-wrapper" [class.canUpdate]="canUpdate" [class.updating]="updating" [class.update-error]="updateError || updateConflict" [class.updated]="updated" *ngIf="!loading && !error">
-  <a class="cancel-link" mat-button href="/company/{{company.id}}">
+  <a class="cancel-link" mat-button [routerLink]="['/company', company.id]">
     <mat-icon>cancel</mat-icon>
     Cancel
   </a>

@@ -13,7 +13,7 @@
 
   <button mat-button (click)="error = false; detectChanges()">Edit further!</button>
 
-  <a class="cancel-link" mat-button href="/companies">
+  <a class="cancel-link" mat-button [routerLink]="['/companies']">
   <mat-icon>cancel</mat-icon>
   I give up!
 </a>
@@ -24,13 +24,13 @@
     The company has been created!
   </p>
 
-  <a mat-button href="/company/{{createdCompany.id}}">Show it!</a>
+  <a mat-button [routerLink]="['/company', createdCompany.id]">Show it!</a>
 
-  <a mat-button href="/companies/new">Create another!</a>
+  <a mat-button [routerLink]="['/companies/new']">Create another!</a>
 </div>
 
 <div class="company-wrapper" [class.canCreate]="canCreate" [class.creating]="creating" [class.error]="error" [class.created]="created" *ngIf="!creating && !error && !created">
-  <a class="cancel-link" mat-button href="/companies">
+  <a class="cancel-link" mat-button [routerLink]="['/companies']">
     <mat-icon>cancel</mat-icon>
     Cancel
   </a>

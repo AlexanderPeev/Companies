@@ -1,4 +1,4 @@
-import {createServer, Server} from 'restify';
+import {createServer, plugins, Server} from 'restify';
 import {StorageData} from "../storage/storage.data";
 import {CompaniesGetHandler} from "./handlers/companies.get";
 import {CompanyByIdGetHandler} from "./handlers/company.by.id.get";
@@ -11,16 +11,25 @@ const express = require('express');
 export class Rest {
     public setup(clientDir: string, storage: StorageData): void {
         const server: Server = createServer();
+        server.pre(plugins.pre.dedupeSlashes());
+        server.pre(plugins.pre.sanitizePath());
+        server.use(plugins.bodyParser());
 
-        server.get('/rest/companies/', new CompaniesGetHandler(storage).getRequestHandler());
-        server.post('/rest/companies/', new CompaniesCreatePostHandler(storage).getRequestHandler());
+        const allGetRequestHandler = new CompaniesGetHandler(storage).getRequestHandler();
+        const createPostRequestHandler = new CompaniesCreatePostHandler(storage).getRequestHandler();
+        server.get('/rest/companies', allGetRequestHandler);
+        server.post('/rest/companies', createPostRequestHandler);
         server.get('/rest/companies/:id', new CompanyByIdGetHandler(storage).getRequestHandler());
         server.put('/rest/companies/:id', new CompanyByIdPutHandler(storage).getRequestHandler());
         server.del('/rest/companies/:id', new CompanyByIdDeleteHandler(storage).getRequestHandler());
 
-        server.use(express.static(clientDir));
+        const clientHandler = plugins.serveStatic({appendRequestPath: false, directory: clientDir, 'default': 'index.html'});
+        server.get('/*', clientHandler);
+        server.get('/company/*', clientHandler);
+        server.get('/companies/*', clientHandler);
+        server.get('/companies/new*', clientHandler);
 
-        server.listen(8080, () => {
+        server.listen(8081, () => {
             console.log('%s listening at %s', server.name, server.url);
         });
     }
