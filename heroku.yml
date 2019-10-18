@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: node "/app/server/companies/build/server/companies/src/main.js" "/app/client/companies/dist/companies" 80
+  web: node "/app/server/companies/src/main.js" "/app/client/companies/dist/companies" 80
