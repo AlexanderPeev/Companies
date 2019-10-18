@@ -13,6 +13,6 @@ ADD api /app/api
 ADD server /app/server
 RUN cd /app/client/companies && npm install --no-save && npm run build-prod
 RUN cd /app/server/companies && npm install --no-save && npm run build-prod
-EXPOSE 8081
-ENTRYPOINT ["node", "/app/server/build/server/companies/src/main.js", "/app/client/dist/companies"]
-CMD ["node", "/app/server/build/server/companies/src/main.js", "/app/client/dist/companies"]
+EXPOSE 80
+ENTRYPOINT ["node", "/app/server/companies/build/server/companies/src/main.js", "/app/client/companies/dist/companies", "80"]
+CMD ["node", "/app/server/companies/build/server/companies/src/main.js", "/app/client/companies/dist/companies", "80"]

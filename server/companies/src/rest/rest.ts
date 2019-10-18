@@ -9,7 +9,7 @@ import {CompanyByIdDeleteHandler} from "./handlers/company.by.id.delete";
 const express = require('express');
 
 export class Rest {
-    public setup(clientDir: string, storage: StorageData): void {
+    public setup(clientDir: string, storage: StorageData, port: number): void {
         const server: Server = createServer();
         server.pre(plugins.pre.dedupeSlashes());
         server.pre(plugins.pre.sanitizePath());
@@ -26,10 +26,11 @@ export class Rest {
         const clientHandler = plugins.serveStatic({appendRequestPath: false, directory: clientDir, 'default': 'index.html'});
         server.get('/*', clientHandler);
         server.get('/company/*', clientHandler);
+        server.get('/company/*/edit', clientHandler);
         server.get('/companies/*', clientHandler);
         server.get('/companies/new*', clientHandler);
 
-        server.listen(8081, () => {
+        server.listen(port || 8081, () => {
             console.log('%s listening at %s', server.name, server.url);
         });
     }

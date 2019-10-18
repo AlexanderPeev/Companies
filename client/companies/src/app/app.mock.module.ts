@@ -8,12 +8,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatButtonModule, MatButton} from '@angular/material/button';
-import {MatCardModule, MatCard} from '@angular/material/card';
-import {MatFormFieldModule, MatFormField, MatError} from '@angular/material/form-field';
-import {MatIconModule, MatIcon} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-spinner';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -35,11 +35,17 @@ import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-s
   ],
   providers: [],
   exports: [
-    MatCard,
-    MatError,
-    MatFormField,
-    MatIcon,
-    MatSpinner,
+    RouterTestingModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class AppMockModule { }
