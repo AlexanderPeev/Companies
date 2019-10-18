@@ -13,6 +13,6 @@ ADD api /app/api
 ADD server /app/server
 RUN cd /app/client/companies && npm install --no-save && npm run build-prod
 RUN cd /app/server/companies && npm install --no-save && npm run build-prod
-EXPOSE 8888
-ENTRYPOINT ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", "8888", "/usr/bin/rethinkdb"]
-CMD ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", "8888", "/usr/bin/rethinkdb"]
+EXPOSE $PORT
+ENTRYPOINT ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", $PORT, "/usr/bin/rethinkdb"]
+CMD ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", $PORT, "/usr/bin/rethinkdb"]
