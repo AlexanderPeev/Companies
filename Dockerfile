@@ -14,5 +14,5 @@ ADD server /app/server
 RUN cd /app/client/companies && npm install --no-save && npm run build-prod
 RUN cd /app/server/companies && npm install --no-save && npm run build-prod
 EXPOSE 80
-ENTRYPOINT ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", "80"]
-CMD ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", "80"]
+ENTRYPOINT ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", "80", "/usr/bin/rethinkdb"]
+CMD ["node", "/app/server/companies/src/main.js", "/app/client/companies/dist/companies", "80", "/usr/bin/rethinkdb"]
