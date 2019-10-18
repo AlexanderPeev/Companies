@@ -78,6 +78,18 @@ export class Company {
     }
   }
 
+  get beneficialOwners(): string[] | null {
+    return this.dto.beneficialOwners || null;
+  }
+
+  set beneficialOwners(value: string[] | null) {
+    if(value) {
+      this.dto.beneficialOwners = value;
+    } else if ('beneficialOwners' in this.dto) {
+      delete this.dto.beneficialOwners;
+    }
+  }
+
   public copy(): Company {
     return new Company(Object.assign({}, this.dto));
   }

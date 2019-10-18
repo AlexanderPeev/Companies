@@ -7,4 +7,5 @@ export interface CompanyRestDTO {
     country: string;
     email?: string;     // optional
     phone?: string;      // optional
+    beneficialOwners?: string[]; // optional
 }
