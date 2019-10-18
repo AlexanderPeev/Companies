@@ -15,7 +15,7 @@ export class Main {
             const dbProcess = execFile(dbStart);
             dbProcess.stdout.on('data', (data: any) => {
                 console.log('DB stdout: ' + data);
-                if(data.indexOf('Server ready')) {
+                if(data.indexOf('Server ready') !== -1) {
                     if(!started) {
                         this.startRestService(clientDir, port);
                         started = true;
@@ -31,6 +31,7 @@ export class Main {
     }
 
     private startRestService(clientDir: string, port: number): void {
+        console.log('Starting REST Service and Client: ' + clientDir);
         new StorageEngine().prepare().then(storage => new Rest().setup(clientDir, storage, port)).catch(e => {
             console.error(e);
         });
