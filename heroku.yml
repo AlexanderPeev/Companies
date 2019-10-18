@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: node "/app/server/companies/src/main.js" "/app/client/companies/dist/companies" $PORT "/usr/bin/rethinkdb"
+  web: node "/app/server/companies/src/main.js" "/app/client/companies/dist/companies" "/usr/bin/rethinkdb"

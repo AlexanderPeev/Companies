@@ -5,8 +5,8 @@ const execFile = require("child_process").execFile;
 export class Main {
     public main(): void {
         const clientDir = process.argv[2] + '';
-        const port = parseInt(process.argv[3], 10);
-        const dbStart = process.argv[4] || null;
+        const port = parseInt(process.env.PORT || '8081', 10);
+        const dbStart = process.argv[3] || null;
         let started = false;
         console.log('Setting up REST interfaces with client dir: ' + clientDir);
 
