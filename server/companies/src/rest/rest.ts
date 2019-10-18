@@ -30,7 +30,7 @@ export class Rest {
         server.get('/companies/*', clientHandler);
         server.get('/companies/new*', clientHandler);
 
-        server.listen(port || 8081, () => {
+        server.listen(port || 8081, '0.0.0.0', () => {
             console.log('%s listening at %s', server.name, server.url);
         });
     }
